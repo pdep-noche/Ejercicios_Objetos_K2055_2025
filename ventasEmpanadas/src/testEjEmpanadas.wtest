@@ -1,0 +1,13 @@
+import ejEmpanadas.*
+
+test "negocio pagar sueldo galvan" {
+	
+	negocio.pagarA(galvan)
+	assert.equals(35000, negocio.disponible())
+
+}
+
+test "negocio pagar sueldo a baigorria" {
+	negocio.pagarA(baigorria)
+	assert.equals(48500, negocio.disponible())
+}

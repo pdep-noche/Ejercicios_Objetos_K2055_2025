@@ -1,0 +1,47 @@
+import drCasa.*
+
+describe "ejercicio dr Casa" {
+	
+	const malaria = new Infecciosa(cantCelulas = 5000)
+	const otitis = new Infecciosa(cantCelulas = 1000)
+	const lupus = new Autoinmune(cantCelulas = 5000)
+	
+	const malariaPulenta = new Infecciosa(cantCelulas = 80000)
+	const logan = new Persona(temperatura = 36, cantCelulas= 3000000)
+	const frank = new Persona(temperatura = 36, cantCelulas = 3500000)
+	
+	method initialize() {
+		logan.contraer(malaria)
+		logan.contraer(otitis)
+		logan.contraer(lupus)
+	}
+	
+	
+	test "frank contraer enfermedad" {
+		frank.contraer(malariaPulenta)
+		assert.that(frank.tieneEnfermedad(malariaPulenta))
+	}
+	
+	test "enfermedad infecciosa reproducir" {
+		malaria.reproducir()
+		assert.equals(10000, malaria.cantCelulas())
+	}
+	
+	test "logan vivir un dia" {
+		logan.vivirUnDia()
+		assert.equals(42, logan.temperatura())
+	}
+	
+	test "logan no esta en coma" {
+		assert.notThat(logan.estaEnComa())
+	}
+	
+	test "cant celulas amenazadas enf agresivas" {
+		assert.equals(5000, logan.cantCelulasAmenazadasEnAgresivas())
+	}
+	
+	test "enfermedad que más celulas afecta" {
+		assert.equals(malaria, logan.enfermedadQueMasCelulasAfecte())
+	}
+	
+}

@@ -1,0 +1,25 @@
+import restaurante.*
+describe "ej restaurante" {
+	const juan = new Cliente(tipoCliente = comun, salario = 10000)
+	const comedido = new Comedido(montoMax = 2000)
+	
+	test "cuanto pagara cliente comun" {
+
+		assert.equals(1100,  juan.cuantoPagaraPara(1000))
+	}
+	
+	test "cuanto pagara cliente comedido" {
+		juan.tipoCliente(comedido)
+		assert.equals(1200,  juan.cuantoPagaraPara(1000))
+	}
+	
+	test "cuanto pagara amarrete" {
+		juan.tipoCliente(amarrete)
+		assert.equals(1000, juan.cuantoPagaraPara(1000))
+	}
+	
+	test "cuanto pagara segunSalario" {
+		juan.tipoCliente(segunSalario)
+		assert.equals(1100, juan.cuantoPagaraPara(1000))
+	}
+}
